@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 export const generateToken = (user: IUser): string => {
   return jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
-    expiresIn: parseInt(process.env.JWT_EXPIRES_IN || "86400"),
+    expiresIn: parseInt(process.env.JWT_EXPIRES_IN || "1d"),
   });
 };
 
@@ -27,8 +27,9 @@ export const registerService = async (
     return { user: user[0], token };
   } catch (error) {
     await session.abortTransaction();
-    session.endSession();
     throw error;
+  } finally {
+    session.endSession();
   }
 };
 

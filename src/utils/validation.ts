@@ -30,3 +30,17 @@ export const validateLogin = (data: any) => {
 
   return schema.validate(data);
 };
+
+export const validateCreateProduct = (data: any) => {
+  const schema = Joi.object({
+    name: Joi.string().required(),
+    description: Joi.string().required(),
+    price: Joi.number().required(),
+    category: Joi.string().required(),
+    stock: Joi.number().required(),
+    images: Joi.array().items(Joi.string()).required(),
+    seller: Joi.string().required(),
+  });
+
+  return schema.validate(data);
+};
