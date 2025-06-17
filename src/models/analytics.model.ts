@@ -62,7 +62,6 @@ const userSessionSchema = new Schema<IUserSession>(
   { timestamps: true }
 );
 
-userSessionSchema.index({ sessionId: 1 });
 userSessionSchema.index({ user: 1, startTime: -1 });
 
 // Product View Schema
