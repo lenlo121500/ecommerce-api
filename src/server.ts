@@ -9,6 +9,7 @@ import authRoutes from "./routes/auth.route";
 import { globalRateLimiter } from "./middlewares/rateLimiter";
 import globalErrorHandler from "./middlewares/errorHandler";
 import productRoutes from "./routes/product.route";
+import cartRoutes from "./routes/cart.route";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(globalRateLimiter);
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/cart", cartRoutes);
 
 app.use(globalErrorHandler);
 
