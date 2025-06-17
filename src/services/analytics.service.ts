@@ -41,7 +41,7 @@ export const trackPageViewService = async (
   );
 };
 
-export const trackProductView = async (data: {
+export const trackProductViewService = async (data: {
   productId: string;
   sessionId: string;
   userId?: string;
@@ -64,7 +64,10 @@ export const trackProductView = async (data: {
   });
 };
 
-export const trackEventService = async (sessionId: string, event: IAnalyticsEvent) => {
+export const trackEventService = async (
+  sessionId: string,
+  event: IAnalyticsEvent
+) => {
   await UserSession.findOneAndUpdate(
     { sessionId },
     { $push: { events: event } }
@@ -226,7 +229,9 @@ export const getProductAnalyticsService = async (
   return { views, orders };
 };
 
-export const getDashboardStats = async (days: number = 30): Promise<any> => {
+export const getDashboardStatsService = async (
+  days: number = 30
+): Promise<any> => {
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
 
