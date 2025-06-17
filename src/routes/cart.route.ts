@@ -19,17 +19,17 @@ cartRoutes.get("/", protect, getCart);
 // @route   POST /api/cart
 // @desc    Add product to cart
 // @access  Private
-cartRoutes.post("/", protect, addToCart);
+cartRoutes.post("/items", protect, addToCart);
 
 // @route   PUT /api/cart/:productId
 // @desc    Update quantity of a specific product in the cart
 // @access  Private
-cartRoutes.put("/:productId", protect, updateCartItem);
+cartRoutes.put("/items/:productId", protect, updateCartItem);
 
 // @route   DELETE /api/cart/:productId
 // @desc    Remove specific product from cart
 // @access  Private
-cartRoutes.delete("/:productId", protect, removeFromCart);
+cartRoutes.delete("/items/:productId", protect, removeFromCart);
 
 // @route   DELETE /api/cart
 // @desc    Clear all items from the cart
