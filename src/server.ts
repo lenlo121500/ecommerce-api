@@ -10,6 +10,7 @@ import { globalRateLimiter } from "./middlewares/rateLimiter";
 import globalErrorHandler from "./middlewares/errorHandler";
 import productRoutes from "./routes/product.route";
 import cartRoutes from "./routes/cart.route";
+import orderRoutes from "./routes/order.route";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(globalRateLimiter);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/cart", cartRoutes);
+app.use("/api/v1/orders", orderRoutes);
 
 app.use(globalErrorHandler);
 
