@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 export const generateToken = (user: IUser): string => {
   return jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
-    expiresIn: parseInt(process.env.JWT_EXPIRES_IN || "1d"),
+    expiresIn: 86400, // 1 day in seconds
   });
 };
 
