@@ -50,6 +50,20 @@ export interface IOrderItem {
   price: number;
 }
 
+export interface CreateOrderData {
+  user: string;
+  items: IOrderItem[];
+  shippingAddress: {
+    street: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    country: string;
+  };
+  paymentMethod: string;
+  notes?: string;
+}
+
 export interface ICart extends Document {
   user: Types.ObjectId | string;
   items: ICartItem[];
