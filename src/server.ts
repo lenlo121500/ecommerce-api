@@ -32,6 +32,31 @@ app.use("/api/v1/cart", cartRoutes);
 app.use("/api/v1/orders", orderRoutes);
 app.use("/api/v1/analytics", analyticsRoutes);
 
+// health check routes
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ 
+    success: true, 
+    message: "Server is healthy",
+    timestamp: new Date(),
+    uptime: process.uptime(),
+  });
+});
+
+app.get("/api/health/db", async (req, res) => {
+  try {
+    await connectDB();
+    res.status(200).json({ 
+      success: true, 
+      message: "Database connection is healthy",
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      message: "Database connection is unhealthy",
+    });
+  }
+});
+
 app.use(globalErrorHandler);
 
 app.listen(PORT, async () => {
