@@ -42,6 +42,8 @@ export interface IOrder extends Document {
   shippingAddress: IAddress;
   paymentMethod: string;
   paymentStatus: "pending" | "completed" | "failed";
+  notes?: string;
+  updatedAt: Date;
 }
 
 export interface IOrderItem {
@@ -62,6 +64,13 @@ export interface CreateOrderData {
   };
   paymentMethod: string;
   notes?: string;
+}
+
+export interface PaginatedOrders {
+  orders: IOrder[];
+  totalPages: number;
+  currentPage: number;
+  totalOrders: number;
 }
 
 export interface ICart extends Document {
