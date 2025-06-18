@@ -119,10 +119,8 @@ export const deleteProduct = async (
 ) => {
   logger.info("deleteProduct controller hit...");
   try {
-    const deletedProduct = await deleteProductService(req.params.id);
-
+    await deleteProductService(req.params.id);
     
-
     res.status(200).json({
       success: true,
       message: "Product deleted successfully",
